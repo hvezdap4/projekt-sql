@@ -81,24 +81,24 @@ Despite rising nominal food prices, the average national wage grew at a faster p
 *   **Version 3 (Data Cleaning & Median):** In the final version, I modified the script to compare only those food items that have a complete time series (enforced by the `HAVING COUNT(yoy_change_pct) = 12` condition). I also complemented the analysis with the median of year-over-year changes, which is immune to extreme anomalies and thus better captures the typical long-term trend of a product's price development without being skewed by shocks.
 
 #### Results
-*   **Absolute Winner:** **Granulated Sugar (Cukr krystalový)** exhibits the slowest year-over-year price growth. Its long-term trend is actually deflationary, with its price declining by an average of **`-1.92%`** annually (featuring an even deeper median of **`-2.47%`**). However, a standard deviation of **`12.55%`** revealed that its historical path was full of wild price swings and market shocks.
+*   **Absolute Winner:** **Granulated Sugar (Cukr krystalový)** exhibits the slowest year-over-year price growth. Its long-term trend is actually deflationary, with its price declining by an average of **`-1.92 %`** annually (featuring an even deeper median of **`-2.47 %`**). However, a standard deviation of **`12.55 %`** revealed that its historical path was full of wild price swings and market shocks.
 
 #### Output Data Notes
 The output dataset in the primary section was strictly restricted by a condition requiring at least 12 year-over-year comparisons. This filter successfully excluded only *Quality White Wine (Jakostní víno bílé)*, for which data collection started late in 2015. All other commodities possess a fully intact 13-year dataset.
 
 ---
 
-## Question 4: Is there a year where the year-over-year increase in food prices was significantly higher than wage growth (greater than a 10% difference)?
+## Question 4: Is there a year where the year-over-year increase in food prices was significantly higher than wage growth (greater than a 10 % difference)?
 
 #### Analytical Development & Versions (Interim Results)
 *   **Version 1 (Global Comparison):** The objective of this version was to create a unified overview that directly compares aggregated national year-over-year food price changes against average wage changes for the entire Czech Republic. The script mathematically subtracts these values for each calendar year and, using an automated flag (`CASE WHEN`), verifies whether a critical moment occurred historically where food prices outpaced wages by more than 10 percentage points.
 *   **Sorting Optimization:** To maximize clarity and ensure the immediate detection of extremes, I chose not to sort the resulting overview chronologically. Instead, it is sorted in descending order based on the magnitude of financial pressure on citizens, using the **`difference_pct DESC`** column. This places the historically most challenging years on the very first rows.
 
 #### Results
-The analysis demonstrated that **there is no year** in which the year-over-year increase in food prices outpaced wage growth by more than 10%. From a long-term macroeconomic perspective, the purchasing power of the population remained protected because wage dynamics were strong enough to absorb the pace of food inflation. Over the tracked period, the data split **exactly half and half** – food prices grew faster in 6 of the years, while wages grew faster in the other 6. However, two contrasting historical extremes stand out clearly in the data:
+The analysis demonstrated that **there is no year** in which the year-over-year increase in food prices outpaced wage growth by more than 10 %. From a long-term macroeconomic perspective, the purchasing power of the population remained protected because wage dynamics were strong enough to absorb the pace of food inflation. Over the tracked period, the data split **exactly half and half** – food prices grew faster in 6 of the years, while wages grew faster in the other 6. However, two contrasting historical extremes stand out clearly in the data:
 
 *   **The Most Challenging Year, 2013 (A difference of `+6.79 %` in favor of food):** This year came closest to the monitored 10 % threshold. Average wages decreased in real terms for the first time in history (**`-0.78 %`**), while food prices surged sharply by **`+6.01 %`**. For citizens' wallets, this was demonstrably the worst year.
-*   **The Most Favorable Year, 2009 (A difference of `-9.42%` in favor of wages):** The exact polar opposite of 2013. Food prices in stores to plunge across the board at **`-6.58 %`**. Wages, however, maintained a modest inertia-driven growth of **`+2.84 %`**. In this year, people had more financial resources on average, and food was significantly cheaper than the typical trend.
+*   **The Most Favorable Year, 2009 (A difference of `-9.42 %` in favor of wages):** The exact polar opposite of 2013. Food prices in stores to plunge across the board at **`-6.58 %`**. Wages, however, maintained a modest inertia-driven growth of **`+2.84 %`**. In this year, people had more financial resources on average, and food was significantly cheaper than the typical trend.
 
 #### Output Data Notes
 The output dataset covers the complete time series and exhibits no missing values for the tracked years (with the exception of the baseline year 2006, where a year-over-year change logically cannot be calculated). All computations are standardized to compare the aggregated average of 27 complete food categories against 19 industry branches.
